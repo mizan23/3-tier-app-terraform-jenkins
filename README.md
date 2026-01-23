@@ -60,7 +60,7 @@ This project demonstrates a **complete DevOps workflow** from code to production
               ┌─────────────────────▼─────────────────────┐
               │    Application Load Balancer (ALB)        │
               │    • SSL/TLS Termination                  │
-              │    • Health Checks                         │
+              │    • Health Checks                        │
               │    • Public Subnets (Multi-AZ)            │
               └─────────────────────┬─────────────────────┘
                                     │
