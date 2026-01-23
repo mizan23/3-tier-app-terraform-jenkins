@@ -1,0 +1,99 @@
+# ============================================================================
+# Terraform Variables Configuration (EXAMPLE)
+# ============================================================================
+# 
+# This is a template file. Copy it to create your actual config:
+#   cp terraform.tfvars.example terraform.tfvars
+# 
+# Then update with your actual values.
+# 
+# IMPORTANT: terraform.tfvars is in .gitignore - do NOT commit it!
+# It contains sensitive information like passwords and resource IDs.
+# ============================================================================
+
+# ============================================================================
+# AWS Configuration
+# ============================================================================
+aws_region  = "ap-south-1"              # AWS region (e.g., us-east-1, ap-south-1)
+aws_profile = "your-aws-profile-name"   # AWS CLI profile from ~/.aws/credentials
+
+# ============================================================================
+# Networking Configuration
+# ============================================================================
+# Your existing VPC and subnet IDs (create these first or use default VPC)
+vpc_id             = "vpc-xxxxxxxxxxxxxxxxx"
+public_subnet_ids  = ["subnet-xxxxxxxxxxxxxxxxx", "subnet-yyyyyyyyyyyyyyyyy"]
+private_subnet_ids = ["subnet-zzzzzzzzzzzzzzzzz", "subnet-aaaaaaaaaaaaaaaaa"]
+
+# Security Group IDs (create these first with proper rules)
+alb_security_group_id      = "sg-xxxxxxxxxxxxxxxxx"  # Allow 80, 443 from 0.0.0.0/0
+frontend_security_group_id = "sg-yyyyyyyyyyyyyyyyy"  # Allow 80 from ALB SG
+backend_security_group_id  = "sg-zzzzzzzzzzzzzzzzz"  # Allow 3000 from Frontend SG
+database_security_group_id = "sg-aaaaaaaaaaaaaaaaa"  # Allow 5432 from Backend SG
+
+# ============================================================================
+# Route53 Configuration
+# ============================================================================
+# Your Route53 hosted zone ID (get this from Route53 console)
+hosted_zone_id = "Z1234567890ABC"
+
+# Your domain name (must match the hosted zone)
+domain_name    = "bmi.example.com"
+
+# ============================================================================
+# EC2 Configuration
+# ============================================================================
+# Your EC2 key pair name (create this first in EC2 console)
+key_name = "your-ec2-key-pair-name"
+
+# Instance Types (adjust based on workload and budget)
+instance_type_frontend = "t3.small"   # 2 vCPU, 2 GB RAM - serves Nginx + React
+instance_type_backend  = "t3.small"   # 2 vCPU, 2 GB RAM - runs Node.js API
+instance_type_database = "t3.medium"  # 2 vCPU, 4 GB RAM - runs PostgreSQL
+
+# Optional: Specify AMI ID (leave commented to use latest Ubuntu 22.04 LTS)
+# ami_id = "ami-0c55b159cbfafe1f0"
+
+# ============================================================================
+# Application Configuration
+# ============================================================================
+# GitHub repository containing the application code
+git_repo_url = "https://github.com/your-username/terraform-3-tier-different-servers.git"
+git_branch   = "main"
+
+# ============================================================================
+# Database Configuration
+# ============================================================================
+# PostgreSQL database settings
+db_name     = "bmi_db"
+db_user     = "bmi_user"
+db_password = "your-secure-database-password-here"  # CHANGE THIS! Use strong password
+
+# ============================================================================
+# SETUP INSTRUCTIONS
+# ============================================================================
+# 
+# 1. Copy this file:
+#    cp terraform.tfvars.example terraform.tfvars
+# 
+# 2. Update all placeholder values (search for "your-" and "xxxxxxxxx")
+# 
+# 3. Required AWS Resources (create these first):
+#    - VPC with public and private subnets
+#    - Security groups with proper rules
+#    - Route53 hosted zone for your domain
+#    - EC2 key pair for SSH access
+#    - S3 bucket for Terraform state
+# 
+# 4. Security best practices:
+#    - Use strong, unique database password
+#    - Never commit terraform.tfvars to version control
+#    - Rotate credentials regularly
+#    - Use AWS Secrets Manager for production
+# 
+# 5. Initialize Terraform:
+#    terraform init -backend-config=backend-config.tfbackend
+#    terraform plan
+#    terraform apply
+# 
+# ============================================================================
