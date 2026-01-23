@@ -50,7 +50,7 @@ Go to **Jenkins → Manage Jenkins → Credentials** and add:
 2. **Pipeline section**:
    - Definition: **Pipeline script from SCM**
    - SCM: **Git**
-   - Repository URL: `https://github.com/your-username/terraform-3-tier-different-servers.git`
+   - Repository URL: `https://github.com/sarowar-alam/3-tier-app-terraform-jenkins.git`
    - Branch: `*/main`
    - Script Path: `Jenkinsfile`
 3. **Save**
@@ -475,3 +475,16 @@ This Jenkins pipeline demonstrates:
 **🎉 You now have a production-ready Jenkins pipeline for Terraform!**
 
 For questions or issues, check the troubleshooting section or Jenkins console logs.
+
+---
+
+## 🧑‍💻 Author
+
+**Md. Sarowar Alam**  
+Lead DevOps Engineer, Hogarth Worldwide  
+📧 Email: sarowar@hotmail.com  
+🔗 LinkedIn: [linkedin.com/in/sarowar](https://www.linkedin.com/in/sarowar/)
+
+---
+
+---

@@ -289,8 +289,8 @@ alias {
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/terraform-3-tier-different-servers.git
-cd terraform-3-tier-different-servers/terraform
+git clone https://github.com/sarowar-alam/3-tier-app-terraform-jenkins.git
+cd 3-tier-app-terraform-jenkins/terraform
 ```
 
 ### 2. Configure Backend
@@ -783,3 +783,16 @@ For students and contributors:
 **🎉 Happy Terraforming!**
 
 For manual deployment instructions, see `../manual-implementation/README.md`
+
+---
+
+## 🧑‍💻 Author
+
+**Md. Sarowar Alam**  
+Lead DevOps Engineer, Hogarth Worldwide  
+📧 Email: sarowar@hotmail.com  
+🔗 LinkedIn: [linkedin.com/in/sarowar](https://www.linkedin.com/in/sarowar/)
+
+---
+
+---

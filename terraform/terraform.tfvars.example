@@ -58,7 +58,7 @@ instance_type_database = "t3.medium"  # 2 vCPU, 4 GB RAM - runs PostgreSQL
 # Application Configuration
 # ============================================================================
 # GitHub repository containing the application code
-git_repo_url = "https://github.com/your-username/terraform-3-tier-different-servers.git"
+git_repo_url = "https://github.com/sarowar-alam/3-tier-app-terraform-jenkins.git"
 git_branch   = "main"
 
 # ============================================================================

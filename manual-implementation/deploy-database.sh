@@ -24,7 +24,7 @@ DB_NAME="${DB_NAME:-bmi_db}"
 DB_USER="${DB_USER:-bmi_user}"
 DB_PASSWORD="${DB_PASSWORD:-0stad2025}"
 DB_PORT="${DB_PORT:-5432}"
-GIT_REPO="${GIT_REPO:-https://github.com/sarowar-alam/terraform-3-tier-different-servers.git}"
+GIT_REPO="${GIT_REPO:-https://github.com/sarowar-alam/3-tier-app-terraform-jenkins.git}"
 GIT_BRANCH="${GIT_BRANCH:-main}"
 
 # Check if running as root

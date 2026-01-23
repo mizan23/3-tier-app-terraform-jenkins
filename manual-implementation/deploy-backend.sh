@@ -41,7 +41,7 @@ DB_USER="${DB_USER:-bmi_user}"
 DB_PASSWORD="${DB_PASSWORD:-0stad2025}"
 BACKEND_PORT="${BACKEND_PORT:-3000}"
 FRONTEND_URL="${FRONTEND_URL:-https://bmi.ostaddevops.click}"
-GIT_REPO="${GIT_REPO:-https://github.com/sarowar-alam/terraform-3-tier-different-servers.git}"
+GIT_REPO="${GIT_REPO:-https://github.com/sarowar-alam/3-tier-app-terraform-jenkins.git}"
 GIT_BRANCH="${GIT_BRANCH:-main}"
 
 # Validate required variables

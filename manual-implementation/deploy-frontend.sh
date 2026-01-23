@@ -37,7 +37,7 @@ echo -e "${YELLOW}Running as: $(whoami), App user: $ACTUAL_USER${NC}"
 BACKEND_HOST="${BACKEND_HOST:-localhost}"
 BACKEND_PORT="${BACKEND_PORT:-3000}"
 DOMAIN="${DOMAIN:-bmi.ostaddevops.click}"
-GIT_REPO="${GIT_REPO:-https://github.com/sarowar-alam/terraform-3-tier-different-servers.git}"
+GIT_REPO="${GIT_REPO:-https://github.com/sarowar-alam/3-tier-app-terraform-jenkins.git}"
 GIT_BRANCH="${GIT_BRANCH:-main}"
 
 # Validate required variables
