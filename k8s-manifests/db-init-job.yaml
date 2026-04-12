@@ -1,0 +1,43 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-init
+spec:
+  template:
+    spec:
+      containers:
+        - name: db-init
+          image: postgres:14
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              echo "Waiting for Postgres...";
+
+              until pg_isready -h postgres-service -p 5432 -U admin; do
+                echo "Postgres not ready yet...";
+                sleep 2;
+              done;
+
+              echo "Postgres is ready! Initializing database...";
+
+              psql postgresql://admin:password@postgres-service:5432/mydb <<EOF
+
+              CREATE TABLE IF NOT EXISTS measurements (
+                id SERIAL PRIMARY KEY,
+                measurement_date DATE,
+                weight_kg FLOAT,
+                height_cm FLOAT,
+                age INT,
+                sex VARCHAR(10),
+                activity_level VARCHAR(50),
+                bmi FLOAT,
+                bmi_category VARCHAR(50),
+                bmr FLOAT,
+                daily_calories FLOAT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+              );
+
+              EOF
+
+              echo "DB Init Done!";
+      restartPolicy: OnFailure
