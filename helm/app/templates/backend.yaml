@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend
 spec:
-  replicas: 2
+  replicas: {{ .Values.backend.replicas }}
   selector:
     matchLabels:
       app: backend
@@ -12,25 +12,51 @@ spec:
       labels:
         app: backend
     spec:
+
+      # ✅ Wait for Postgres to be ready
+      initContainers:
+        - name: wait-for-postgres
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              until nc -z postgres 5432; do
+                echo "Waiting for postgres..."
+                sleep 2
+              done
+
       containers:
         - name: backend
           image: "{{ .Values.backend.image }}:{{ .Values.backend.tag }}"
           imagePullPolicy: Always
+
           ports:
-            - containerPort: 3000
+            - containerPort: {{ .Values.backend.servicePort }}
+
           env:
+            # ✅ SINGLE SOURCE OF TRUTH
             - name: DATABASE_URL
               value: postgres://postgres:postgres@postgres:5432/appdb
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service
+  name: backend-service   # 🔥 MUST match nginx
 spec:
   selector:
     app: backend
   ports:
     - port: 3000
-      targetPort: 3000
+      targetPort: {{ .Values.backend.servicePort }}
+      protocol: TCP
   type: ClusterIP

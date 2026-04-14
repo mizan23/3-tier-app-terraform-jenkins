@@ -6,9 +6,9 @@ frontend:
 
 backend:
   image: mizan23/backend
-  tag: latest   # default
+  tag: latest   # overridden by CI/CD
   replicas: 2
-  servicePort: 5000   # your app port inside container
+  servicePort: 5000
 
 postgres:
   image: postgres:15

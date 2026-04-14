@@ -30,4 +30,5 @@ spec:
   ports:
     - port: 80
       targetPort: {{ .Values.frontend.servicePort }}
+      protocol: TCP   # ✅ ADD THIS (good practice)
   type: ClusterIP
