@@ -1,0 +1,24 @@
+frontend:
+  image: mizan23/frontend:latest
+  replicas: 2
+  servicePort: 80
+
+backend:
+  image: mizan23/backend:latest
+  replicas: 2
+  servicePort: 5000   # your app port inside container
+
+postgres:
+  image: postgres:15
+  user: postgres
+  password: postgres
+  db: appdb
+  port: 5432   # 🔥 REQUIRED
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  cpuUtilization: 60
+
+
