@@ -31,7 +31,7 @@ jobs:
       - name: Build Frontend
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/frontend:${{ github.sha }} ./frontend
-          docker push ${{ secrets.DOCKER_USERNAME }}/frontend:${{ github.sha }} ./frontend
+          docker push ${{ secrets.DOCKER_USERNAME }}/frontend:${{ github.sha }}
 
       # 5. Configure AWS
       - name: Configure AWS credentials
