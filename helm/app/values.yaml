@@ -1,10 +1,12 @@
 frontend:
-  image: mizan23/frontend:latest
+  image: mizan23/frontend
+  tag: latest
   replicas: 2
   servicePort: 80
 
 backend:
-  image: mizan23/backend:latest
+  image: mizan23/backend
+  tag: latest   # default
   replicas: 2
   servicePort: 5000   # your app port inside container
 

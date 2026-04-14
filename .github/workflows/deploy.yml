@@ -61,4 +61,6 @@ jobs:
       # 9. Deploy with Helm
       - name: Deploy to EKS
         run: |
-          helm upgrade --install app ./helm/app
+          helm upgrade --install app ./helm/app \
+            --set frontend.tag=${{ github.sha }} \
+            --set backend.tag=${{ github.sha }}
