@@ -13,7 +13,6 @@ spec:
         app: backend
     spec:
 
-      # ✅ Wait for Postgres to be ready
       initContainers:
         - name: wait-for-postgres
           image: busybox
@@ -35,28 +34,19 @@ spec:
             - containerPort: {{ .Values.backend.servicePort }}
 
           env:
-            # ✅ SINGLE SOURCE OF TRUTH
             - name: DATABASE_URL
               value: postgres://postgres:postgres@postgres:5432/appdb
-
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "300m"
-              memory: "256Mi"
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service   # 🔥 MUST match nginx
+  name: backend-service
 spec:
   selector:
     app: backend
   ports:
-    - port: 3000
+    - port: 3000   # 🔥 service port (nginx uses this)
       targetPort: {{ .Values.backend.servicePort }}
       protocol: TCP
   type: ClusterIP

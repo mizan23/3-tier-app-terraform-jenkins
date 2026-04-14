@@ -8,7 +8,7 @@ backend:
   image: mizan23/backend
   tag: latest   # overridden by CI/CD
   replicas: 2
-  servicePort: 5000
+  servicePort: 3000
 
 postgres:
   image: postgres:15
