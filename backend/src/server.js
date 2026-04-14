@@ -20,13 +20,22 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-// Health check endpoint
-app.get('/health', (req, res) => {
+// Health check
+app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', environment: NODE_ENV });
+});
+
+// Base API
+app.get('/api', (req, res) => {
+  res.json({ message: 'API is working' });
 });
 
 // API routes
 app.use('/api', routes);
+
+app.get('/api', (req, res) => {
+  res.json({ message: 'API is working' });
+});
 
 // 404 handler
 app.use((req, res) => {
