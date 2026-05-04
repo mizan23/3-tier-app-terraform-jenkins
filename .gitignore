@@ -47,6 +47,7 @@ yarn.lock
 # ============================================================================
 dist/
 build/
+coverage/
 *.log
 
 # IDE and Editor Files

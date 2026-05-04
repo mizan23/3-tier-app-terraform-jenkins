@@ -1,0 +1,11 @@
+aws_region    = "ap-south-1"
+aws_profile   = "default"
+project_name  = "sonarqube-server"
+environment   = "dev"
+
+vpc_id        = "vpc-xxxxxxxx"
+subnet_id     = "subnet-xxxxxxxx"
+key_name      = "your-keypair-name"
+
+instance_type = "t3.large"
+allowed_cidrs = ["0.0.0.0/0"]
