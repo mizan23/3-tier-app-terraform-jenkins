@@ -1,0 +1,32 @@
+{
+  "family": "module15-fargate-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::366403523501:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "module15-app",
+      "image": "366403523501.dkr.ecr.us-east-1.amazonaws.com/module15-ecs-fargate-app:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/module15-fargate-task",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
